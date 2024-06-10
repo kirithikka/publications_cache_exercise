@@ -23,11 +23,13 @@ You can access the API using '/publications/{$doi}'
 
 where $doi can be either full or partial. The requests are first checked in the application's cache. If not found, requests are sent to CrossRef:
 
-For full DOI, the publications are retrieved from 
+For full DOI, the publication is retrieved from 
 https://api.crossref.org/works/{$fullDoi}
+and is cached in the application
 
 For partial DOI, the publications are retrieved from 
 https://api.crossref.org/works?query={$partialDOI}
+All the publications fetched from the above link are cached in the application
 
 If there are no publications in the cache/crossRef, the following response is returned:
 {
