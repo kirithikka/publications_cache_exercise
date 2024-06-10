@@ -17,7 +17,7 @@ To start the server:
 ```
 
 ## Other details:
-1. I have implemented the API in the following way:
+I have implemented the API in the following way:
 
 You can access the API using '/publications/{$doi}'
 
