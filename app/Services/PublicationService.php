@@ -36,7 +36,7 @@ class PublicationService
      * Get publications from crossRef
      *
      */
-    private function getPublicationsFromCrossRef(string $doi): ?array
+    private function getPublicationsFromCrossRef(string $doi)
     {
         $uri = $this->getCrossRefUri($doi);
 
@@ -45,6 +45,10 @@ class PublicationService
 
             $decodedResponse = json_decode($response, true);
 
+            if (empty($decodedResponse)) {
+                return;
+            }
+            
             if ($this->isFullDoi($doi)) {
                 $publication = $decodedResponse['message'];
                 Cache::put($doi, json_encode($publication));
@@ -54,6 +58,10 @@ class PublicationService
 
             // partial Dois' results
             $publications = $decodedResponse['message']['items'];
+            if (empty($publications)) {
+                return;
+            }
+
             Cache::put($doi, json_encode($publications));
             foreach ($publications as $publication) {
                 Cache::put($publication['DOI'], json_encode($publication));
