@@ -40,3 +40,6 @@ I have deployed the API in the AWS EC2 which can be accessed at
 http://ec2-18-218-17-250.us-east-2.compute.amazonaws.com/publications/{$doi}
 
 Please note that currently, HTTPS is not used.
+
+
+I have added my answers to followup questions in FOLLOW-UP.md
